@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- If IE use the latest rendering engine -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<!-- Set the page to the width of the device and set the zoom level -->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Images Swap jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="style.css" type="text/css" rel="stylesheet" />
+	<script>
+		$(document).ready(function(){
+			
+			let images = [
+				// add-images-here
+        'img/bee.png',
+        'img/bike2.png',
+        'img/github cat.png',
+        'img/react-cyan.png',
+        'img/rocket.png',
+        'img/rubik cube-purple-white-blue.png',
+        'img/spider-circle.png',
+        'img/viking-green.png'
+			]; 
+
+			let counter = 1; 
+			let speed = 2000;
+			let interval = setInterval(imageSwap, speed);
+			// setInterval(function, milliseconds)
+
+			function imageSwap(){
+				$('#image1').attr('src', images[counter]);
+				$('#showNo').html(counter); 
+				counter++;
+				if (counter > images.length -1){
+				 	counter = 1;
+				 }  
+			}; 
+
+			$('#stop').click(function(){
+				clearInterval(interval);
+				// clearInterval(timerVariable)
+				counter = 0;
+				$('#image1').attr('src', images[0]); 
+				console.log("stop");
+				$('#stop').attr("disabled","disabled"); 
+				$('#pause').attr("disabled","disabled"); 
+				$('#speedup').attr("disabled","disabled"); 
+				$('#slowdown').attr("disabled","disabled"); 
+			}); 
+
+			$('#pause').click(function(){
+				clearInterval(interval);
+				console.log("pause");
+				$('#stop').attr("disabled","disabled"); 
+				$('#pause').attr("disabled","disabled"); 
+				$('#speedup').attr("disabled","disabled"); 
+				$('#slowdown').attr("disabled","disabled"); 
+			}); 
+
+			$('#play').click(function(){
+				// reset speed at 3000 milliseconds (3s)
+				speed = 3000;
+				interval = setInterval(imageSwap, speed);
+				console.log(speed);
+				console.log("play");
+				$('#stop').removeAttr("disabled"); 
+				$('#pause').removeAttr("disabled"); 
+				$('#speedup').removeAttr("disabled"); 
+				$('#slowdown').removeAttr("disabled"); 
+			}); 
+
+			$('#speedup').click(function(){
+				if (speed == 2000){
+					console.log("no no no slow down juan");
+					$('#speedup').attr("disabled","disabled"); 
+				} else {
+					clearInterval(interval);
+					speed = speed - 1000;
+					interval = setInterval(imageSwap, speed);
+					console.log(speed);
+					console.log("speed up");
+					$('#slowdown').removeAttr("disabled"); 
+				} 
+			}); 
+
+			$('#slowdown').click(function(){
+				if (speed == 5000){
+					console.log("speed up juan");
+					$('#slowdown').attr("disabled","disabled"); 
+				} else {
+					clearInterval(interval);
+					speed = speed + 1000;
+					interval = setInterval(imageSwap, speed);
+					console.log(speed);
+					console.log("slow down");
+					$('#speedup').removeAttr("disabled"); 
+				} 
+			}); 
+		}); 
+	</script> 
+</head>
+<body>
+	<div class="container">
+		<img src="img/bee.png" id="image1" height="" />
+	</div>
+	<div class="buttons">
+		<input type="button" class="stop" id="stop" value="Stop" />
+		<input type="button" class="pause" id="pause" value="Pause" />
+		<input type="button" class="play" id="play" value="Play" />
+		<input type="button" class="speedup" id="speedup" value="Speed Up" />
+		<input type="button" class="slowdown" id="slowdown" value="Slow Down" />
+		<h1 id="showNo">1</h1>
+	</div>
+</body>
+</html>

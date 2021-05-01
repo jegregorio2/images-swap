@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- If IE use the latest rendering engine -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<!-- Set the page to the width of the device and set the zoom level -->
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>Images Swap Event Listener</title>
+	<link href="style.css" type="text/css" rel="stylesheet" />
+	<script>
+		let images = [
+			// add-images-here
+      'img/bee.png',
+      'img/bike2.png',
+      'img/github cat.png',
+      'img/react-cyan.png',
+      'img/rocket.png',
+      'img/rubik cube-purple-white-blue.png',
+      'img/spider-circle.png',
+      'img/viking-green.png'
+		]; 
+		function imageSwap(){
+			let theImage = document.getElementById('image1').src = images[counter];
+			let act_count = counter + 1;
+			let theNumber = document.getElementById('showNo').innerHTML = act_count;
+			let theTotal = document.getElementById('total').innerHTML = images.length;
+			counter++;
+			if (counter > images.length -1){
+				counter = 0;
+			} 
+		}; 
+	</script> 
+</head>
+<body>
+	<div class="container">
+		<img src="img/bee.png" id="image1" height="" />
+	</div>
+	<div class="buttons">
+		<button class="stop" id="stop">Stop</button>
+		<button class="pause" id="pause">Pause</button>
+		<button class="play" id="play">Play</button>
+		<button class="speedup" id="speedup">Speed Up</button>
+		<button class="slowdown" id="slowdown">Slow Down</button>
+		<h1 id="total"></h1>
+		<h1 id="showNo">1</h1>
+	</div>
+	<script src="script.js"></script>  
+</body>
+</html>

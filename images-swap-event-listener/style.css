@@ -1,0 +1,68 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: hsla(120, 100%, 80%, 1.0);
+}
+
+.container {
+  display: block;
+  margin: 0 auto;
+  width: 800px;
+}
+
+.container img {
+  /*width: 100%;*/
+  height: 600px;
+}
+
+.buttons {
+  background-color: hsla(270, 100%, 80%, 1.0);
+  width: 800px;
+  display: block;
+  margin: 0 auto;
+  height: 80px;
+}
+
+button {
+  padding: 5px;
+  margin-right: 5px;
+  float: left;
+  margin-top: 10px;
+  font-weight: bold;
+  position: relative;
+  left: 20px;
+  width: 100px;
+}
+
+.play {
+  background-color: hsla(120, 100%, 70%, 1.0);
+}
+
+.stop {
+  background-color: hsla(0, 100%, 80%, 1.0);
+}
+
+.pause {
+  background-color: hsla(60, 100%, 90%, 1.0);
+}
+
+.speedup {
+  background-color: hsla(240, 100%, 80%, 1.0);
+}
+
+.slowdown {
+  background-color: hsla(30, 100%, 80%, 1.0);
+}
+
+h1 {
+  float: right;
+  margin-right: 20px;
+}
